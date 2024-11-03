@@ -11,4 +11,6 @@ FROM debian:bookworm-slim
 COPY --from=builder /tmp/app /app
 RUN apt-get update -y && apt-get install -y ca-certificates && rm -rf /var/lib/apt/lists/* && update-ca-certificates
 
+ENV DISABLE_MODEL_MAPPING=1
+
 CMD ["/app/gemini"]
